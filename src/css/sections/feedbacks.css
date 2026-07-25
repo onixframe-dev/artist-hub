@@ -1,0 +1,327 @@
+.feedbacks {
+  padding-top: 64px;
+  padding-bottom: 64px;
+
+  @media (min-width: 1400px) {
+    padding-top: 112px;
+    padding-bottom: 112px;
+  }
+}
+
+.feedbacks .container {
+  margin: 0 auto;
+}
+
+.feedback-title-hide {
+  display: none;
+}
+
+.swiper {
+  position: relative;
+  /* margin-bottom: 26px; */
+  @media (min-width: 768px) {
+    margin-bottom: 16px;
+  }
+  @media (min-width: 1400px) {
+    margin-bottom: 80px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 59px;
+  
+  gap: 32px;
+  
+}
+
+.list-star {
+  display: flex;
+}
+
+.user-feedback {
+  font-family: 'Epilogue', sans-serif;
+  width: 288px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--white-color);
+
+  @media (min-width: 768px) {
+    width: 518px;
+    font-size: 26px;
+  }
+  @media (min-width: 1400px) {
+    font-size: 32px;
+    width: 768px;
+    line-height: 1.3;
+  }
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--white-color);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: none !important;
+
+  /* Убираем дефолтную текстовую стрелку Swiper */
+  &::after {
+    display: none !important;
+  }
+
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+
+  /* Твои размеры */
+  width: 48px !important;
+  height: 48px !important;
+  padding: 0;
+  /* Обнуляем паддинг, чтобы центровка SVG была точной */
+
+  /* Чтобы иконка внутри не улетала */
+  margin-top: 0 !important;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Фикс для SVG внутри, чтобы он не сжимался */
+.swiper-button-prev svg,
+.swiper-button-next svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: flex !important;
+  }
+}
+/*!! Start the hell                               */
+
+.custom-pagination {
+  display: flex;
+  gap: 9px;
+  justify-content: center;
+  position: absolute;
+  bottom: 16px;
+  right: 50%;
+  transform: translateX(50%);
+  @media (min-width: 768px) {
+      bottom: 30px;
+    }
+  @media (min-width: 1440px) {
+    bottom: 0px;
+  }
+}
+
+.custom-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #fff;
+  opacity: 0.2;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.custom-bullet.is-active {
+  opacity: 1;
+}
+/*!! End of hell                               */
+.stars-static {
+  display: flex;
+  gap: 4px;
+}
+
+.star {
+  position: relative;
+  width: 20px;
+  height: 19px;
+  background-color: var(--white-color);
+  /* Цвет пустой звезды */
+  /* Рисуем форму звезды через маску (работает во всех браузерах) */
+  clip-path: path(
+    'M9.07088 0.612343C9.41462 -0.204115 10.5854 -0.204114 10.9291 0.612346L12.9579 5.43123C13.1029 5.77543 13.4306 6.01061 13.8067 6.0404L19.0727 6.45748C19.9649 6.52814 20.3267 7.62813 19.6469 8.2034L15.6348 11.5987C15.3482 11.8412 15.223 12.2218 15.3106 12.5843L16.5363 17.661C16.744 18.5211 15.7969 19.201 15.033 18.7401L10.5245 16.0196C10.2025 15.8252 9.7975 15.8252 9.47548 16.0196L4.96699 18.7401C4.20311 19.201 3.25596 18.5211 3.46363 17.661L4.68942 12.5843C4.77698 12.2218 4.65182 11.8412 4.36526 11.5987L0.353062 8.2034C-0.326718 7.62813 0.0350679 6.52814 0.927291 6.45748L6.19336 6.0404C6.5695 6.01061 6.89716 5.77543 7.04207 5.43123L9.07088 0.612343Z'
+  );
+}
+
+.star::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  /* По умолчанию звезда пустая */
+  background-color: var(--btn-background);
+  transition: width 0.3s ease;
+}
+
+/* --- Сначала общие правила для всех полных звезд --- */
+.rating-set-1 .star:nth-child(1):after,
+.rating-set-2 .star:nth-child(-n+2):after,
+.rating-set-3 .star:nth-child(-n+3):after,
+.rating-set-4 .star:nth-child(-n+4):after,
+.rating-set-5 .star:nth-child(-n+5):after,
+/* Добавляем закраску целых звезд для дробных рейтингов */
+.rating-set-1-5 .star:nth-child(1):after,
+.rating-set-2-5 .star:nth-child(-n+2):after,
+.rating-set-3-5 .star:nth-child(-n+3):after,
+.rating-set-4-5 .star:nth-child(-n+4):after {
+  width: 100%;
+}
+
+/* --- Теперь правила только для ПОСЛЕДНЕЙ половинки --- */
+.rating-set-0-5 .star:nth-child(1):after,
+.rating-set-1-5 .star:nth-child(2):after,
+.rating-set-2-5 .star:nth-child(3):after,
+.rating-set-3-5 .star:nth-child(4):after,
+.rating-set-4-5 .star:nth-child(5):after {
+  width: 50%;
+}
+
+.btn-feedback-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: 0 auto;
+
+  border-radius: 12px;
+  padding: 10px 24px;
+
+  width: 288px;
+  height: 47px;
+
+  border: none;
+  background: var(--btn-background);
+  transition: var(--transition);
+  box-shadow:
+    0 1px 2px 0 rgba(6, 3, 7, 0.05),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(6, 3, 7, 0.15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+
+  color: var(--white-color);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+
+  @media (min-width: 768px) {
+    width: 158px;
+    font-size: 18px;
+    padding: 10px 14px;
+  }
+  @media (min-width: 1440px) {
+    width: 177px;
+    font-size: 18px;
+    padding: 10px 24px;
+  }
+  &:hover {
+    opacity: 0.6;
+  }
+  &:active {
+    opacity: 1;
+    box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05);
+  }
+
+  /* анiмація кнопки*/
+}
+.shake-bottom {
+  -webkit-animation: shake-bottom 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    infinite;
+  animation: shake-bottom 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+@-webkit-keyframes shake-bottom {
+  0%,
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+  }
+
+  10% {
+    -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
+  }
+
+  20%,
+  40%,
+  60% {
+    -webkit-transform: rotate(-4deg);
+    transform: rotate(-4deg);
+  }
+
+  30%,
+  50%,
+  70% {
+    -webkit-transform: rotate(4deg);
+    transform: rotate(4deg);
+  }
+
+  80% {
+    -webkit-transform: rotate(-2deg);
+    transform: rotate(-2deg);
+  }
+
+  90% {
+    -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes shake-bottom {
+  0%,
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+  }
+
+  10% {
+    -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
+  }
+
+  20%,
+  40%,
+  60% {
+    -webkit-transform: rotate(-4deg);
+    transform: rotate(-4deg);
+  }
+
+  30%,
+  50%,
+  70% {
+    -webkit-transform: rotate(4deg);
+    transform: rotate(4deg);
+  }
+
+  80% {
+    -webkit-transform: rotate(-2deg);
+    transform: rotate(-2deg);
+  }
+
+  90% {
+    -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
+  }
+}

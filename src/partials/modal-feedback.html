@@ -1,0 +1,71 @@
+<dialog class="feedback-modal">
+  <div class="container">
+    <button type="button" class="feedback-close-btn">
+      <svg fill="#fff" width="14" height="14">
+        <use
+          class="feedback-svg"
+          href="./assets/icons/symbol-defs.svg#close-button"
+        ></use>
+      </svg>
+    </button>
+    <h3 class="feedback-modal-title">Оставить отзыв</h3>
+    <form class="feedback-form">
+      <label for="feedback-name-inp">Имя</label>
+      <input
+        type="text"
+        name="feedback-name"
+        id="feedback-name-inp"
+        placeholder="Мария"
+        class="feedback-name-inp"
+      />
+      <p class="feedback-error-txt-name">Имя должно быть от 2 до 16 символов</p>
+      <label for="feedback-msg-inp">Сообщение</label>
+      <textarea
+        name="feedback-msg"
+        id="feedback-msg-inp"
+        placeholder="Введите сообщение..."
+        class="feedback-msg-inp"
+        rows="4"
+      ></textarea>
+      <p class="feedback-error-txt-msg">
+        Сообщение должно быть от 10 до 512 символов
+      </p>
+      <div class="feedback-rating">
+        <label class="feedback-star-label">
+          <input type="radio" name="star-rating" value="5" />
+          <svg class="feedback-modal-star" width="31" height="29">
+            <use href="./assets/icons/symbol-defs.svg#star-rating" />
+          </svg>
+        </label>
+        <label class="feedback-star-label">
+          <input type="radio" name="star-rating" value="4" />
+          <svg class="feedback-modal-star" width="31" height="29">
+            <use href="./assets/icons/symbol-defs.svg#star-rating" />
+          </svg>
+        </label>
+        <label class="feedback-star-label">
+          <input type="radio" name="star-rating" value="3" />
+          <svg class="feedback-modal-star" width="31" height="29">
+            <use href="./assets/icons/symbol-defs.svg#star-rating" />
+          </svg>
+        </label>
+        <label class="feedback-star-label">
+          <input type="radio" name="star-rating" value="2" />
+          <svg class="feedback-modal-star" width="31" height="29">
+            <use href="./assets/icons/symbol-defs.svg#star-rating" />
+          </svg>
+        </label>
+        <label class="feedback-star-label">
+          <input type="radio" name="star-rating" value="1" />
+          <svg class="feedback-modal-star" width="31" height="29">
+            <use href="./assets/icons/symbol-defs.svg#star-rating" />
+          </svg>
+        </label>
+        <p class="feedback-error-rating-msg">Пожалуйста, поставьте оценку</p>
+      </div>
+      <button class="feedback-submit-btn btn-primary" type="submit">
+        Отправить
+      </button>
+    </form>
+  </div>
+</dialog>
